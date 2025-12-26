@@ -1,0 +1,122 @@
+Event Management System (EMS) Documentation
+Overview
+The Event Management System (EMS) is a Java-based GUI application designed to simplify the organization and management of events. The system is connected to a MySQL database to handle the following functionalities:
+
+Event Planning: Creation, editing, and deletion of events.
+Attendee Registration: Registration, viewing, updating, and removal of event attendees.
+Venue Management: Management of venues, including adding, editing, and deleting venue details.
+The system ensures data integrity through validation checks and handles errors to ensure smooth user interaction.
+
+Technologies Used
+Java: Core programming language used to develop the system.
+MySQL: Database Management System (DBMS) for storing event, attendee, and venue data.
+JDBC: Java Database Connectivity used to interact with the MySQL database.
+Swing: GUI components for creating the user interface.
+Features
+1. Event Planning Interface
+The event planning interface allows users to manage events by providing options to:
+
+Create New Events: Users can create new events by filling in fields such as event name, date, time, description, and organizer details.
+Edit Events: Users can modify the details of existing events.
+Delete Events: Users can remove events from the system.
+Validation:
+
+Ensures that event names are unique.
+Ensures proper date and time formatting.
+2. Attendee Registration Interface
+The attendee registration interface allows users to register for events:
+
+Register New Attendees: Attendees provide their name, email, contact number, and select an event.
+View Registered Attendees: The system allows users to view the list of attendees for each event.
+Update Attendee Information: Attendee details can be updated if needed.
+Remove Attendees: Users can remove attendees from events.
+Validation:
+
+Ensures email and contact number formats are valid.
+Prevents duplicate registrations using the same email or phone number.
+3. Venue Management Interface
+Venue management allows users to manage event venues:
+
+Add New Venues: Users can add new venues with details like name, address, capacity, and availability.
+Edit Venue Information: Users can update venue details.
+Delete Venues: Venues can be deleted from the system.
+4. MySQL Database Integration
+The application is integrated with MySQL to handle data storage for events, attendees, and venues:
+
+Database Structure: The system includes tables for storing event, attendee, and venue data.
+CRUD Operations: The system performs Create, Read, Update, and Delete operations on the database.
+Database Queries: SQL queries are used to retrieve, insert, update, and delete data.
+Error Handling and Validation
+The system ensures that data entered by users is validated for correctness before being processed:
+
+Event Name Validation: Checks if the event name is unique.
+Date and Time Validation: Ensures the event's date and time are in the correct format.
+Email and Phone Number Validation: Ensures that the email and phone number entered are valid according to predefined patterns.
+Duplicate Registration Prevention: Ensures that attendees cannot register multiple times using the same email or phone number.
+If invalid data is entered or an error occurs (such as duplicate entries), appropriate error messages are displayed using JOptionPane.
+
+Database Setup
+MySQL Database: The system connects to a MySQL database using JDBC.
+Tables:
+Events Table: Stores event details (name, description, date, time, organizer).
+Attendees Table: Stores attendee details (name, email, contact number, event ID).
+Venues Table: Stores venue details (name, address, capacity, availability).
+SQL Queries:
+INSERT: Adds new records into the database (e.g., new event, new attendee).
+SELECT: Retrieves records from the database (e.g., list of attendees, events).
+UPDATE: Modifies existing records (e.g., updating event or attendee information).
+DELETE: Removes records from the database (e.g., removing an event or attendee).
+Example SQL Table Creation for Events:
+
+sql
+Copy code
+CREATE TABLE Events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_name VARCHAR(255) NOT NULL UNIQUE,
+    event_date DATE,
+    event_time TIME,
+    event_description TEXT,
+    organizer_details VARCHAR(255)
+);
+User Interface
+Layout
+The interface is built using Swing components:
+
+JFrame: Used as the main window for the application.
+JPanel: Containers used to group components for each form (Event, Attendee, Venue).
+JLabel: Used for labeling text fields.
+JTextField: Allows user input for fields like event name, email, etc.
+JButton: Used for actions like submitting data, editing, or deleting.
+JComboBox: Used for selecting an event during attendee registration.
+Navigation
+Tabs or Buttons: The application can be navigated through different sections using tabbed panels or buttons, allowing users to switch between event management, attendee registration, and venue management.
+Example Interface:
+Event Management: A list of events displayed in a table with options to add, edit, or delete events.
+Attendee Registration: A form where users can enter attendee details and select an event.
+Venue Management: A form to add, edit, or delete venue details.
+Setup Instructions
+Requirements
+Java Development Kit (JDK): Version 8 or higher.
+MySQL Database: Version 5.7 or higher.
+NetBeans IDE: Version 8.0 or higher.
+Database Configuration
+Install MySQL and create a database for the application.
+Create the necessary tables (Events, Attendees, Venues) in the database using the SQL queries provided.
+Update the DBConnection.java class with the correct database connection details.
+Running the Application
+Open the project in NetBeans IDE.
+Ensure MySQL database is running.
+Run the Java application using NetBeans.
+Documentation of Working Features
+Event Planning
+Ability to create, edit, and delete events.
+Validation to ensure unique event names and correct date/time formats.
+Attendee Registration
+Ability to register attendees with valid email and contact number.
+Duplicate registration prevention.
+View and remove registered attendees.
+Venue Management
+Ability to add, edit, and delete venues.
+Error Handling
+Display of appropriate error messages for invalid inputs.
+Prevention of duplicate entries.
